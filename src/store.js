@@ -58,20 +58,20 @@ export default new Vuex.Store({
 
 			return axios
 				.get(
-					'https://78.media.tumblr.com/tumblr_m39nv7PcCU1r326q7o1_500.png',
+					'https://file-examples-com.github.io/uploads/2017/02/file_example_XLSX_1000.xlsx',
 					{
 						responseType: 'arraybuffer'
 					},
 					payload
 				)
-				.then(response => {
+				.then((response) => {
 					// server imitation
 					setTimeout(() => {
 						store.commit('API_DATA_SUCCES', true);
 						store.dispatch('forceFileDownload', response);
 					}, 5000);
 				})
-				.catch(error => {
+				.catch((error) => {
 					store.commit('API_DATA_FAILURE', error);
 				});
 		},
@@ -81,7 +81,7 @@ export default new Vuex.Store({
 			console.log('response.data', response.data);
 			const link = document.createElement('a');
 			link.href = url;
-			link.setAttribute('download', 'file.png'); //or any other extension
+			link.setAttribute('download', 'sample_file.xls');
 			document.body.appendChild(link);
 			link.click();
 		}
