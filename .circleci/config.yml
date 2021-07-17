@@ -1,24 +1,17 @@
-version: 2.1
-
+version: '2.1'
 orbs:
-  node: circleci/node@2
-
-  jobs:
+  node: circleci/node@4.5.1
+jobs:
   test:
-    docker:
-      - image: circleci/node:11.8-browsers
-
+    executor:
+      name: node/default
+      tag: '13.14'
     steps:
-      - checkout # special step to check out source code to working directory
-      - node/install-packages:
-          pkg-manager: npm
-          cache-key: 'npm.lock'
+      - checkout
+      - node/install-packages
       - run:
-          name: running unit tests
           command: npm run test:unit
-
 workflows:
-  version: 2
-  test:
+  run_unt_tests:
     jobs:
       - test
