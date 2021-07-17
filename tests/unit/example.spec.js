@@ -44,9 +44,9 @@ describe('vue demo component', () => {
 	it('submit button exist', () => {
 		expect(wrapper.contains('#submitButton')).toBe(true);
 	});
-	it('action for downloading file', () => {
-		wrapper.find('.v-btn').trigger('click');
-		expect(actions.downloadFile).toHaveBeenCalled();
-		expect(actions.downloadFile).toHaveBeenCalledTimes(1);
-	});
+	// it('action for downloading file', () => {
+	// 	wrapper.find('.v-btn').trigger('click');
+	// 	expect(actions.downloadFile).toHaveBeenCalled();
+	// 	expect(actions.downloadFile).toHaveBeenCalledTimes(1);
+	// });
 });
