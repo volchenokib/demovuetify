@@ -1,6 +1,7 @@
 version: '2.1'
 orbs:
   node: circleci/node@4.5.1
+  aws-cli: circleci/aws-cli@2.0
 jobs:
   test:
     executor:
@@ -11,7 +12,21 @@ jobs:
       - node/install-packages
       - run:
           command: npm run test:unit
+  deploy:
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup
+      - node/install-packages
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Deploy
+          command: npm run deploy
+
 workflows:
-  run_unt_tests:
+  test_and_deploy:
     jobs:
       - test
+      - deploy
