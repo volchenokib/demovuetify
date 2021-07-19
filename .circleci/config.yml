@@ -29,4 +29,11 @@ workflows:
   test_and_deploy:
     jobs:
       - test
+          filters:
+            branches:
+              only: master
       - deploy
+          filters:
+            branches:
+              only: master
+          requires: test
