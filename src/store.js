@@ -84,6 +84,34 @@ export default new Vuex.Store({
 			link.setAttribute('download', 'sample_file.xls');
 			document.body.appendChild(link);
 			link.click();
+		},
+
+		async sendData(store, event) {
+			// const payload = JSON.stringify(event);
+
+			// const file = new Blob([payload], {
+			// 	type: 'application/json'
+			// });
+
+			// console.log('file', file);
+
+			// let config = {
+			// 	headers: {
+			// 		'Content-Type': 'text/plain',
+			// 		'Content-Length': 11434,
+			// 		Authorization: `AWS ${process.env.AWS_ACCESS_KEY_ID}:Signature` // "AWS" + " " + AWSAccessKeyId + ":" + Signature;
+			// 	}
+			// };
+
+			try {
+				const res = await axios.post(
+					`https://210jr0xmfc.execute-api.us-east-1.amazonaws.com/test`,
+					event
+				);
+				console.log('res', res);
+			} catch (error) {
+				console.log('error', error);
+			}
 		}
 	}
 });
