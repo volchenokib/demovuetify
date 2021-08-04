@@ -7,6 +7,35 @@
 		<v-btn @click="emailEntered('example@mail.com')" color="primary" flat
 			>Send</v-btn
 		>
+
+		<v-form v-model="valid" class="from">
+			<v-text-field
+				v-model="firstname"
+				:rules="nameRules"
+				:counter="10"
+				label="First name"
+				required
+			></v-text-field>
+
+			<v-text-field
+				v-model="lastname"
+				:rules="nameRules"
+				:counter="10"
+				label="Last name"
+				required
+			></v-text-field>
+
+			<v-text-field
+				v-model="email"
+				:rules="emailRules"
+				label="E-mail"
+				required
+			></v-text-field>
+
+			<v-btn class="mr-4" type="submit" @click="submit">
+				submit
+			</v-btn>
+		</v-form>
 	</div>
 </template>
 
@@ -28,7 +57,19 @@ export default {
 				bubbles: true
 			}
 		},
-		isValid: false
+		isValid: false,
+		valid: false,
+		firstname: "",
+		lastname: "",
+		nameRules: [
+			(v) => !!v || "Name is required",
+			(v) => v.length <= 10 || "Name must be less than 10 characters"
+		],
+		email: "",
+		emailRules: [
+			(v) => !!v || "E-mail is required",
+			(v) => /.+@.+/.test(v) || "E-mail must be valid"
+		]
 	}),
 
 	async mounted() {
@@ -77,7 +118,21 @@ export default {
 			// console.log("res: ", response.json());
 			// return response.json();
 			console.log("emailEntered", adress);
+		},
+		submit() {
+			console.log("submit from", {
+				firstname: this.firstname,
+				lastname: this.lastname,
+				email: this.email
+			});
 		}
 	}
 };
 </script>
+
+<style lang="scss" scoped>
+.from {
+	max-width: 30%;
+	padding: 1em;
+}
+</style>
