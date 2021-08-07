@@ -32,7 +32,7 @@
 				required
 			></v-text-field>
 
-			<v-btn class="mr-4" type="submit" @click="submit">
+			<v-btn class="mr-4" type="submit" @click.prevent="submit">
 				submit
 			</v-btn>
 		</v-form>

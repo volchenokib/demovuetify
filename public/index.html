@@ -66,29 +66,25 @@
 		</script> -->
 
 		<!-- <script>
-			(function() {
+			!(function() {
+				function sth() {
+					// window.GrowthPhysics.init(
+					// 	"https://9rodqtkqr8.execute-api.us-east-2.amazonaws.com/SST/SST_endpoint"
+					// );
+					console.log("window.GrowthPhysics", window.GrowthPhysics);
+				}
 				var t = document.createElement("script");
-				t.type = "text/javascript";
-				t.src =
-					"https://growthphysics.s3.us-west-1.amazonaws.com/dist/growthphysics.js";
-
-				var n = document.getElementsByTagName("script")[0];
-				n.parentNode.insertBefore(t, n);
-				window.onload = function() {
-					if (!window.GrowthPhysics) {
-						console.error("frontend tracker was not loaded");
-					} else {
-						const ft = window.GrowthPhysics;
-						ft.init(
-							"https://9rodqtkqr8.execute-api.us-east-2.amazonaws.com/SST/SST_endpoint"
-						);
-						ft.track("Get Started", { user: "new" });
-					}
-				};
+				(t.type = "text/javascript"),
+					(t.async = !0),
+					(t.src =
+						"https://growthphysics-trigger.s3.us-west-1.amazonaws.com/loader.min.js");
+				t.onload(sth());
+				var e = document.getElementsByTagName("script")[0];
+				e.parentNode.insertBefore(t, e);
 			})();
 		</script> -->
 
-		<script>
+		<!-- <script>
 			!(function() {
 				var analytics = (window.analytics = window.analytics || []);
 				if (!analytics.initialize)
@@ -150,6 +146,23 @@
 						analytics.page();
 					}
 			})();
+		</script> -->
+
+		<!-- Hotjar Tracking Code for https://demovuetify.s3.amazonaws.com/index.html -->
+		<script>
+			(function(h, o, t, j, a, r) {
+				h.hj =
+					h.hj ||
+					function() {
+						(h.hj.q = h.hj.q || []).push(arguments);
+					};
+				h._hjSettings = { hjid: 2542922, hjsv: 6 };
+				a = o.getElementsByTagName("head")[0];
+				r = o.createElement("script");
+				r.async = 1;
+				r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
 		</script>
 
 		<meta charset="utf-8" />
