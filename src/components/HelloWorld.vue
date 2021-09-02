@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-btn id="submitButton" @click="download" color="primary" flat
-			>download</v-btn
+			>Download</v-btn
 		>
 
 		<v-btn @click="emailEntered('example@mail.com')" color="primary" flat
